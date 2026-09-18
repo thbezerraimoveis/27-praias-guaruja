@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>27 Praias de Guarujá | Descubra Guarujá, uma praia de cada vez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',system-ui,sans-serif;background:#f8fafc;color:#0f172a;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0}
+    .header-inner{max-width:1152px;margin:0 auto;padding:0 1.5rem;height:70px;display:flex;align-items:center;justify-content:space-between}
+    .logo span{font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;font-weight:700;color:#0369a1;display:block}
+    .logo small{font-size:.7rem;color:#64748b}
+    nav{display:flex;gap:1.5rem}
+    nav a{font-size:.875rem;font-weight:500;color:#475569}
+    nav a:hover{color:#0284c7}
+    .hero{position:relative;height:70vh;min-height:420px;max-height:620px;overflow:hidden}
+    .hero img{width:100%;height:100%;object-fit:cover}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.75),rgba(15,23,42,.25),transparent)}
+    .hero-content{position:absolute;inset:0;display:flex;align-items:flex-end}
+    .hero-text{max-width:1152px;margin:0 auto;padding:0 1.5rem 3rem;width:100%}
+    .hero-text h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:.75rem}
+    .hero-text p{font-size:1.15rem;color:#e0f2fe;margin-bottom:1.5rem;max-width:28rem}
+    .btn{display:inline-flex;align-items:center;padding:.75rem 1.5rem;border-radius:.75rem;font-weight:600;font-size:.95rem;transition:background .2s}
+    .btn-primary{background:#0284c7;color:#fff}
+    .btn-primary:hover{background:#0369a1}
+    .btn-secondary{background:rgba(255,255,255,.92);color:#0f172a}
+    .btn-secondary:hover{background:#fff}
+    .btn-group{display:flex;flex-wrap:wrap;gap:.75rem}
+    section{max-width:1152px;margin:0 auto;padding:3.5rem 1.5rem}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2rem}
+    .section-head h2{font-family:'Playfair Display',Georgia,serif;font-size:1.85rem;font-weight:700;color:#0f172a}
+    .section-head p{color:#64748b;font-size:.95rem;margin-top:.25rem}
+    .section-head a{font-size:.875rem;font-weight:500;color:#0284c7}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+    .card{background:#fff;border-radius:1rem;overflow:hidden;border:1px solid #f1f5f9;box-shadow:0 1px 3px rgba(0,0,0,.06);transition:all .3s}
+    .card:hover{box-shadow:0 10px 25px rgba(0,0,0,.08);border-color:#bae6fd;transform:translateY(-2px)}
+    .card-img{aspect-ratio:16/10;background:#e0f2fe;overflow:hidden;position:relative}
+    .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .card:hover .card-img img{transform:scale(1.05)}
+    .card-body{padding:1.15rem}
+    .card-body h3{font-family:'Playfair Display',Georgia,serif;font-size:1.15rem;font-weight:700;color:#0f172a;margin-bottom:.35rem}
+    .card:hover .card-body h3{color:#0284c7}
+    .card-body .region{font-size:.75rem;color:#0284c7;font-weight:500}
+    .card-body p{font-size:.875rem;color:#64748b;margin-top:.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .explore{background:#fff;border-top:1px solid #f1f5f9;border-bottom:1px solid #f1f5f9}
+    .explore-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+    .explore-card{padding:1.5rem;border-radius:1rem;border:1px solid #e2e8f0;transition:border-color .2s}
+    .explore-card:hover{border-color:#7dd3fc}
+    .explore-card span{font-size:1.75rem;display:block;margin-bottom:.5rem}
+    .explore-card h3{font-family:'Playfair Display',Georgia,serif;font-size:1.2rem;font-weight:700}
+    .explore-card p{font-size:.875rem;color:#64748b;margin-top:.4rem}
+    .cta{background:linear-gradient(135deg,#0284c7,#06b6d4);border-radius:1rem;padding:2.5rem 1.5rem;text-align:center;color:#fff}
+    .cta h2{font-family:'Playfair Display',Georgia,serif;font-size:1.75rem;font-weight:700;margin-bottom:.75rem}
+    .cta p{color:#e0f2fe;margin-bottom:1.5rem;max-width:28rem;margin-left:auto;margin-right:auto}
+    .cta .btn{background:#fff;color:#0369a1}
+    .cta .btn:hover{background:#f0f9ff}
+    footer{background:#0f172a;color:#94a3b8;padding:3rem 1.5rem 2rem;margin-top:2rem}
+    .footer-inner{max-width:1152px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem}
+    .footer-brand h3{font-family:'Playfair Display',Georgia,serif;font-size:1.2rem;color:#fff;margin-bottom:.5rem}
+    .footer-brand p{font-size:.875rem}
+    .footer-col h4{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:#fff;margin-bottom:.75rem}
+    .footer-col a{display:block;font-size:.875rem;margin-bottom:.35rem;color:#94a3b8}
+    .footer-col a:hover{color:#38bdf8}
+    .copyright{text-align:center;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #1e293b;font-size:.75rem;color:#64748b}
+    .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:40;width:3.5rem;height:3.5rem;background:#22c55e;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.2);transition:transform .2s}
+    .wa-float:hover{transform:scale(1.08)}
+    .wa-float svg{width:1.75rem;height:1.75rem;fill:#fff}
+    .empty{background:#f0f9ff;border:1px solid #e0f2fe;border-radius:1rem;padding:2rem;text-align:center;color:#475569}
+    @media(max-width:640px){nav{display:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <span>27 Praias de Guarujá</span>
+        <small>Descubra Guarujá, uma praia de cada vez.</small>
+      </a>
+      <nav>
+        <a href="#praias">Praias</a>
+        <a href="#pontos">Pontos Turísticos</a>
+        <a href="#blog">Blog</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" style="padding:0;max-width:none">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80" alt="Praia de Guarujá" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>27 Praias de Guarujá</h1>
+        <p>Descubra Guarujá, uma praia de cada vez.</p>
+        <div class="btn-group">
+          <a href="#praias" class="btn btn-primary">Explorar as praias</a>
+          <a href="#sobre" class="btn btn-secondary">Conhecer Guarujá</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="praias">
+    <div class="section-head">
+      <div>
+        <h2>Praias</h2>
+        <p>Conheça as belezas do litoral de Guarujá</p>
+      </div>
+      <a href="#">Ver todas →</a>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-img"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600" alt="Praia" /></div>
+        <div class="card-body">
+          <h3>Praia Exemplo (Demonstração)</h3>
+          <span class="region">Região Exemplo</span>
+          <p>Registro de exemplo para demonstrar a estrutura. Substitua pelos dados reais das praias.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600" alt="Praia" /></div>
+        <div class="card-body">
+          <h3>Estrutura pronta</h3>
+          <span class="region">Cadastre no Supabase</span>
+          <p>As praias reais aparecerão aqui automaticamente após o cadastro no banco.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img"><img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600" alt="Praia" /></div>
+        <div class="card-body">
+          <h3>Uma praia de cada vez</h3>
+          <span class="region">Guarujá - SP</span>
+          <p>O site está preparado para receber todas as praias, uma a uma.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="explore" id="pontos">
+    <section>
+      <div class="section-head">
+        <div>
+          <h2>Explore Guarujá</h2>
+          <p>Roteiros, guias e experiências</p>
+        </div>
+      </div>
+      <div class="explore-grid">
+        <div class="explore-card" style="background:#f0f9ff;border-color:#e0f2fe">
+          <span>🎯</span>
+          <h3>O que fazer</h3>
+          <p>Roteiros, atividades e experiências na cidade.</p>
+        </div>
+        <div class="explore-card" style="background:#ecfeff;border-color:#cffafe">
+          <span>🗺️</span>
+          <h3>Guia de Guarujá</h3>
+          <p>Dicas práticas para planejar sua visita.</p>
+        </div>
+        <div class="explore-card" style="background:#fffbeb;border-color:#fef3c7">
+          <span>🍽️</span>
+          <h3>Experiências</h3>
+          <p>Gastronomia, passeios e momentos únicos.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section id="blog">
+    <div class="section-head">
+      <div>
+        <h2>Últimos conteúdos</h2>
+        <p>Artigos e guias — 1 por dia</p>
+      </div>
+      <a href="#">Ver blog →</a>
+    </div>
+    <div class="empty">
+      <p style="font-weight:600;font-size:1.05rem">Nenhum artigo publicado ainda</p>
+      <p style="font-size:.9rem;margin-top:.5rem">O blog está preparado para receber <strong>1 artigo por dia</strong>. Publique no Supabase e eles aparecerão automaticamente.</p>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="cta">
+      <h2>Planejando sua visita a Guarujá?</h2>
+      <p>Fale conosco pelo WhatsApp e tire suas dúvidas sobre praias, roteiros e dicas locais.</p>
+      <a href="https://wa.me/5511999999999" target="_blank" class="btn">Conversar no WhatsApp</a>
+    </div>
+  </section>
+
+  <footer id="sobre">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>27 Praias de Guarujá</h3>
+        <p>Um guia digital para conhecer as praias, os pontos turísticos e as experiências de Guarujá.</p>
+        <p style="color:#38bdf8;margin-top:.5rem;font-weight:500">Descubra Guarujá, uma praia de cada vez.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <a href="#praias">Praias</a>
+        <a href="#pontos">Pontos Turísticos</a>
+        <a href="#blog">Blog</a>
+        <a href="#sobre">Sobre</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 27 Praias de Guarujá. Todos os direitos reservados.</div>
+  </footer>
+
+  <a href="https://wa.me/5511999999999" class="wa-float" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</body>
+</html>

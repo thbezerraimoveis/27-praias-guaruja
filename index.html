@@ -157,8 +157,8 @@
       <section class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
         <div class="bg-gradient-to-r from-sky-600 to-cyan-500 rounded-2xl p-8 md:p-10 text-center text-white">
           <h2 class="font-serif text-2xl md:text-3xl font-bold mb-3">Planejando sua visita a Guarujá?</h2>
-          <p class="text-sky-100 mb-6 max-w-lg mx-auto">Fale conosco pelo WhatsApp e tire suas dúvidas sobre praias, roteiros e dicas locais.</p>
-          <a id="cta-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white text-sky-700 font-semibold px-6 py-3 rounded-xl hover:bg-sky-50">Conversar no WhatsApp</a>
+          <p class="text-sky-100 mb-6 max-w-lg mx-auto">Entre no canal <strong>27 Praias De Guarujá 🌴</strong> no WhatsApp e receba novidades, dicas e conteúdos sobre as praias.</p>
+          <a id="cta-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white text-sky-700 font-semibold px-6 py-3 rounded-xl hover:bg-sky-50">Entrar no canal do WhatsApp</a>
         </div>
       </section>
     </div>
@@ -235,8 +235,8 @@
         <a id="contato-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-xl hover:bg-green-100 mb-4">
           <span class="text-2xl">💬</span>
           <div>
-            <p class="font-semibold text-slate-900">WhatsApp</p>
-            <p class="text-sm text-slate-600">Resposta rápida</p>
+            <p class="font-semibold text-slate-900">Canal no WhatsApp</p>
+            <p class="text-sm text-slate-600">27 Praias De Guarujá 🌴 — novidades e dicas</p>
           </div>
         </a>
         <form class="mt-8 space-y-4" onsubmit="alert('Formulário demonstrativo. Conecte Formspree/Resend em produção.'); return false;">
@@ -367,10 +367,10 @@
     // ============================================================
     // CONFIGURAÇÃO
     // ============================================================
-    const SUPABASE_URL = 'https://SEU_PROJETO.supabase.co';
-    const SUPABASE_ANON_KEY = 'SUA_CHAVE_ANON_AQUI';
-    const WHATSAPP_NUMBER = '5511999999999';
-    const INSTAGRAM_URL = 'https://instagram.com/seu_perfil';
+    const SUPABASE_URL = 'https://ucmxiwebnjvdpphptkmc.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVjbXhpd2Vibmp2ZHBwaHB0a21jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4NDg0OTYsImV4cCI6MjEwNTQyNDQ5Nn0.RrpnL0W68-ph3FG-ayc4nHOs4hwJfw8dImSYRfo4AlM';
+    const WHATSAPP_CHANNEL_URL = 'https://whatsapp.com/channel/0029Vb9bAiy77qVOQLJDJ50Q';
+    const INSTAGRAM_URL = 'https://www.instagram.com/27praiasguaruja';
     const DASH_SENHA = 'admin27'; // altere esta senha
 
     // Demo data
@@ -706,7 +706,7 @@
     }
 
     function aplicarLinksExternos() {
-      const wa = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Olá! Gostaria de saber mais sobre Guarujá.')}`;
+      const wa = WHATSAPP_CHANNEL_URL;
       ['cta-whatsapp', 'contato-whatsapp', 'footer-whatsapp', 'wa-float'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.href = wa;

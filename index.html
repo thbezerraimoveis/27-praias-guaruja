@@ -263,13 +263,16 @@
         <h1 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 mb-2">Dashboard</h1>
         <p class="text-slate-500 text-sm mb-8">Estatísticas de visualização do site</p>
 
-        <!-- Login -->
+        <!-- Login Supabase Auth -->
         <div id="dash-login" class="max-w-sm mx-auto bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <p class="text-sm text-slate-600 mb-4">Área restrita. Digite a senha de administrador.</p>
-          <input type="password" id="dash-senha" placeholder="Senha" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 mb-3" onkeydown="if(event.key==='Enter') fazerLoginDash()" />
+          <p class="text-sm text-slate-600 mb-4">Área restrita. Entre com a conta de administrador.</p>
+          <label class="block text-xs font-medium text-slate-500 mb-1">E-mail</label>
+          <input type="email" id="dash-email" value="thbezerraimoveis@gmail.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 mb-3" autocomplete="username" />
+          <label class="block text-xs font-medium text-slate-500 mb-1">Senha</label>
+          <input type="password" id="dash-senha" placeholder="Sua senha" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 mb-3" autocomplete="current-password" onkeydown="if(event.key==='Enter') fazerLoginDash()" />
           <button onclick="fazerLoginDash()" class="w-full py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-xl">Entrar</button>
-          <p id="dash-erro" class="text-red-500 text-sm mt-2 hidden">Senha incorreta</p>
-          <p class="text-xs text-slate-400 mt-4">Senha padrão: <code class="bg-slate-100 px-1 rounded">admin27</code> (altere no código)</p>
+          <p id="dash-erro" class="text-red-500 text-sm mt-2 hidden"></p>
+          <p class="text-xs text-slate-400 mt-4">Login autenticado pelo Supabase. Só a conta admin tem acesso.</p>
         </div>
 
         <!-- Conteúdo do dashboard (após login) -->
@@ -371,7 +374,7 @@
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVjbXhpd2Vibmp2ZHBwaHB0a21jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4NDg0OTYsImV4cCI6MjEwNTQyNDQ5Nn0.RrpnL0W68-ph3FG-ayc4nHOs4hwJfw8dImSYRfo4AlM';
     const WHATSAPP_CHANNEL_URL = 'https://whatsapp.com/channel/0029Vb9bAiy77qVOQLJDJ50Q';
     const INSTAGRAM_URL = 'https://www.instagram.com/27praiasguaruja';
-    const DASH_SENHA = 'admin27'; // altere esta senha
+    // Admin: login via Supabase Auth (e-mail thbezerraimoveis@gmail.com)
 
     // Demo data
     const DEMO_BEACHES = [{
@@ -621,26 +624,74 @@
       box.innerHTML = html;
     }
 
-    // ---------- DASHBOARD ----------
-    function isDashLogado() {
-      return localStorage.getItem('dash_auth') === '1';
-    }
-    function fazerLoginDash() {
-      const senha = document.getElementById('dash-senha').value;
-      if (senha === DASH_SENHA) {
-        localStorage.setItem('dash_auth', '1');
-        document.getElementById('dash-erro').classList.add('hidden');
-        mostrarDashConteudo();
-        carregarDashboard();
-      } else {
-        document.getElementById('dash-erro').classList.remove('hidden');
+    // ---------- DASHBOARD (Supabase Auth) ----------
+    const ADMIN_EMAIL = 'thbezerraimoveis@gmail.com';
+
+    async function isDashLogado() {
+      if (!supabaseClient) return false;
+      try {
+        const { data: { session } } = await supabaseClient.auth.getSession();
+        if (!session || !session.user) return false;
+        // Só este e-mail é admin
+        return (session.user.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
+      } catch (e) {
+        return false;
       }
     }
-    function logoutDash() {
-      localStorage.removeItem('dash_auth');
+
+    async function fazerLoginDash() {
+      const email = (document.getElementById('dash-email').value || '').trim();
+      const senha = document.getElementById('dash-senha').value;
+      const erroEl = document.getElementById('dash-erro');
+      erroEl.classList.add('hidden');
+      erroEl.textContent = '';
+
+      if (!supabaseClient) {
+        erroEl.textContent = 'Supabase não configurado. Verifique URL e chave no código.';
+        erroEl.classList.remove('hidden');
+        return;
+      }
+      if (!email || !senha) {
+        erroEl.textContent = 'Preencha e-mail e senha.';
+        erroEl.classList.remove('hidden');
+        return;
+      }
+
+      try {
+        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password: senha });
+        if (error) {
+          erroEl.textContent = error.message === 'Invalid login credentials'
+            ? 'E-mail ou senha incorretos.'
+            : error.message;
+          erroEl.classList.remove('hidden');
+          return;
+        }
+        const userEmail = (data.user && data.user.email || '').toLowerCase();
+        if (userEmail !== ADMIN_EMAIL.toLowerCase()) {
+          await supabaseClient.auth.signOut();
+          erroEl.textContent = 'Esta conta não tem permissão de administrador.';
+          erroEl.classList.remove('hidden');
+          return;
+        }
+        mostrarDashConteudo();
+        carregarDashboard();
+      } catch (e) {
+        erroEl.textContent = 'Erro ao entrar. Tente de novo.';
+        erroEl.classList.remove('hidden');
+        console.error(e);
+      }
+    }
+
+    async function logoutDash() {
+      if (supabaseClient) {
+        try { await supabaseClient.auth.signOut(); } catch (e) {}
+      }
       document.getElementById('dash-login').classList.remove('hidden');
       document.getElementById('dash-conteudo').classList.add('hidden');
+      const senha = document.getElementById('dash-senha');
+      if (senha) senha.value = '';
     }
+
     function mostrarDashConteudo() {
       document.getElementById('dash-login').classList.add('hidden');
       document.getElementById('dash-conteudo').classList.remove('hidden');
@@ -691,11 +742,14 @@
       else if (pagina === 'contato') { mostrarPagina('contato'); }
       else if (pagina === 'dashboard') {
         mostrarPagina('dashboard');
-        if (isDashLogado()) { mostrarDashConteudo(); carregarDashboard(); }
-        else {
-          document.getElementById('dash-login').classList.remove('hidden');
-          document.getElementById('dash-conteudo').classList.add('hidden');
-        }
+        (async function () {
+          const ok = await isDashLogado();
+          if (ok) { mostrarDashConteudo(); carregarDashboard(); }
+          else {
+            document.getElementById('dash-login').classList.remove('hidden');
+            document.getElementById('dash-conteudo').classList.add('hidden');
+          }
+        })();
       }
       window.scrollTo(0, 0);
       history.replaceState(null, '', '#/' + (pagina === 'home' ? '' : pagina));

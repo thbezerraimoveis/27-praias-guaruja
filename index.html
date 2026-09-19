@@ -8,7 +8,6 @@
   <meta property="og:title" content="27 Praias de Guarujá" />
   <meta property="og:description" content="Descubra Guarujá, uma praia de cada vez." />
   <meta property="og:type" content="website" />
-  <meta property="og:locale" content="pt_BR" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -35,12 +34,11 @@
     .page.active { display: block; }
     .prose h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 0.75rem; color: #0f172a; }
     .prose p { margin-bottom: 1rem; line-height: 1.7; color: #334155; }
-    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased min-h-screen flex flex-col">
 
-  <!-- ========== HEADER ========== -->
+  <!-- HEADER -->
   <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="flex items-center justify-between h-16">
@@ -48,13 +46,14 @@
           <span class="font-serif text-xl md:text-2xl font-bold text-sky-700 leading-tight">27 Praias de Guarujá</span>
           <span class="text-xs text-slate-500 hidden sm:block">Descubra Guarujá, uma praia de cada vez.</span>
         </a>
-        <nav class="hidden md:flex items-center gap-6">
+        <nav class="hidden md:flex items-center gap-5">
           <a href="#/praias" onclick="navegar('praias'); return false;" class="text-sm font-medium text-slate-600 hover:text-sky-600">Praias</a>
           <a href="#/pontos" onclick="navegar('pontos'); return false;" class="text-sm font-medium text-slate-600 hover:text-sky-600">Pontos Turísticos</a>
           <a href="#/blog" onclick="navegar('blog'); return false;" class="text-sm font-medium text-slate-600 hover:text-sky-600">Blog</a>
           <a href="#/sobre" onclick="navegar('sobre'); return false;" class="text-sm font-medium text-slate-600 hover:text-sky-600">Sobre</a>
           <a href="#/contato" onclick="navegar('contato'); return false;" class="text-sm font-medium text-slate-600 hover:text-sky-600">Contato</a>
-          <a href="#/buscar" onclick="navegar('buscar'); return false;" class="text-sm font-medium text-slate-600 hover:text-sky-600" aria-label="Buscar">🔍</a>
+          <a href="#/buscar" onclick="navegar('buscar'); return false;" class="text-sm font-medium text-slate-600 hover:text-sky-600" title="Buscar">🔍</a>
+          <a href="#/dashboard" onclick="navegar('dashboard'); return false;" class="text-sm font-medium text-slate-400 hover:text-sky-600" title="Dashboard">📊</a>
         </nav>
         <button id="btn-menu" class="md:hidden p-2 text-slate-600" aria-label="Menu" onclick="toggleMenu()">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -67,15 +66,15 @@
         <a href="#/sobre" onclick="navegar('sobre'); toggleMenu(); return false;" class="text-sm font-medium text-slate-700 py-2">Sobre</a>
         <a href="#/contato" onclick="navegar('contato'); toggleMenu(); return false;" class="text-sm font-medium text-slate-700 py-2">Contato</a>
         <a href="#/buscar" onclick="navegar('buscar'); toggleMenu(); return false;" class="text-sm font-medium text-slate-700 py-2">Buscar</a>
+        <a href="#/dashboard" onclick="navegar('dashboard'); toggleMenu(); return false;" class="text-sm font-medium text-slate-700 py-2">Dashboard</a>
       </nav>
     </div>
   </header>
 
   <main class="flex-1">
 
-    <!-- ========== HOME ========== -->
+    <!-- HOME -->
     <div id="page-home" class="page active">
-      <!-- Hero -->
       <section class="relative h-[70vh] min-h-[400px] max-h-[560px] overflow-hidden">
         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80" alt="Praia de Guarujá" class="absolute inset-0 w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/30 to-transparent"></div>
@@ -84,14 +83,13 @@
             <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3">27 Praias de Guarujá</h1>
             <p class="text-lg md:text-xl text-sky-100 mb-6 max-w-xl">Descubra Guarujá, uma praia de cada vez.</p>
             <div class="flex flex-wrap gap-3">
-              <a href="#/praias" onclick="navegar('praias'); return false;" class="inline-flex items-center px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-xl transition-colors">Explorar as praias</a>
-              <a href="#/sobre" onclick="navegar('sobre'); return false;" class="inline-flex items-center px-6 py-3 bg-white/90 hover:bg-white text-slate-900 font-semibold rounded-xl transition-colors">Conhecer Guarujá</a>
+              <a href="#/praias" onclick="navegar('praias'); return false;" class="inline-flex items-center px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-xl">Explorar as praias</a>
+              <a href="#/sobre" onclick="navegar('sobre'); return false;" class="inline-flex items-center px-6 py-3 bg-white/90 hover:bg-white text-slate-900 font-semibold rounded-xl">Conhecer Guarujá</a>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Praias -->
       <section class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
         <div class="flex items-end justify-between mb-8">
           <div>
@@ -105,7 +103,6 @@
         </div>
       </section>
 
-      <!-- Pontos -->
       <section class="bg-white border-y border-slate-100">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <div class="flex items-end justify-between mb-8">
@@ -121,21 +118,20 @@
         </div>
       </section>
 
-      <!-- Explorar -->
       <section class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
         <h2 class="font-serif text-3xl font-bold text-slate-900 mb-8 text-center">Explore Guarujá</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <a href="#/blog" onclick="navegar('blog'); return false;" class="group p-6 bg-sky-50 rounded-2xl border border-sky-100 hover:border-sky-300 transition-colors">
+          <a href="#/blog" onclick="navegar('blog'); return false;" class="group p-6 bg-sky-50 rounded-2xl border border-sky-100 hover:border-sky-300">
             <span class="text-3xl mb-3 block">🎯</span>
             <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-sky-600">O que fazer</h3>
             <p class="text-sm text-slate-600 mt-2">Roteiros, atividades e experiências na cidade.</p>
           </a>
-          <a href="#/blog" onclick="navegar('blog'); return false;" class="group p-6 bg-cyan-50 rounded-2xl border border-cyan-100 hover:border-cyan-300 transition-colors">
+          <a href="#/blog" onclick="navegar('blog'); return false;" class="group p-6 bg-cyan-50 rounded-2xl border border-cyan-100 hover:border-cyan-300">
             <span class="text-3xl mb-3 block">🗺️</span>
             <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-cyan-600">Guia de Guarujá</h3>
             <p class="text-sm text-slate-600 mt-2">Dicas práticas para planejar sua visita.</p>
           </a>
-          <a href="#/blog" onclick="navegar('blog'); return false;" class="group p-6 bg-amber-50 rounded-2xl border border-amber-100 hover:border-amber-300 transition-colors">
+          <a href="#/blog" onclick="navegar('blog'); return false;" class="group p-6 bg-amber-50 rounded-2xl border border-amber-100 hover:border-amber-300">
             <span class="text-3xl mb-3 block">🍽️</span>
             <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-amber-600">Experiências</h3>
             <p class="text-sm text-slate-600 mt-2">Gastronomia, passeios e momentos únicos.</p>
@@ -143,13 +139,12 @@
         </div>
       </section>
 
-      <!-- Últimos conteúdos -->
       <section class="bg-slate-50 border-t border-slate-100">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <div class="flex items-end justify-between mb-8">
             <div>
               <h2 class="font-serif text-3xl font-bold text-slate-900">Últimos conteúdos</h2>
-              <p class="text-slate-600 mt-1">Artigos e guias publicados recentemente</p>
+              <p class="text-slate-600 mt-1">Artigos e guias — 1 por dia</p>
             </div>
             <a href="#/blog" onclick="navegar('blog'); return false;" class="text-sky-600 hover:text-sky-700 font-medium text-sm hidden sm:block">Ver blog →</a>
           </div>
@@ -159,17 +154,16 @@
         </div>
       </section>
 
-      <!-- CTA WhatsApp -->
       <section class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
         <div class="bg-gradient-to-r from-sky-600 to-cyan-500 rounded-2xl p-8 md:p-10 text-center text-white">
           <h2 class="font-serif text-2xl md:text-3xl font-bold mb-3">Planejando sua visita a Guarujá?</h2>
           <p class="text-sky-100 mb-6 max-w-lg mx-auto">Fale conosco pelo WhatsApp e tire suas dúvidas sobre praias, roteiros e dicas locais.</p>
-          <a id="cta-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white text-sky-700 font-semibold px-6 py-3 rounded-xl hover:bg-sky-50 transition-colors">Conversar no WhatsApp</a>
+          <a id="cta-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white text-sky-700 font-semibold px-6 py-3 rounded-xl hover:bg-sky-50">Conversar no WhatsApp</a>
         </div>
       </section>
     </div>
 
-    <!-- ========== PRAIAS LISTA ========== -->
+    <!-- PRAIAS -->
     <div id="page-praias" class="page">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
         <h1 class="font-serif text-4xl font-bold text-slate-900 mb-3">Praias de Guarujá</h1>
@@ -178,12 +172,11 @@
       </div>
     </div>
 
-    <!-- ========== PRAIA DETALHE ========== -->
     <div id="page-praia-detalhe" class="page">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 py-10" id="conteudo-praia-detalhe"></div>
     </div>
 
-    <!-- ========== PONTOS LISTA ========== -->
+    <!-- PONTOS -->
     <div id="page-pontos" class="page">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
         <h1 class="font-serif text-4xl font-bold text-slate-900 mb-3">Pontos Turísticos</h1>
@@ -192,12 +185,11 @@
       </div>
     </div>
 
-    <!-- ========== PONTO DETALHE ========== -->
     <div id="page-ponto-detalhe" class="page">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 py-10" id="conteudo-ponto-detalhe"></div>
     </div>
 
-    <!-- ========== BLOG LISTA ========== -->
+    <!-- BLOG -->
     <div id="page-blog" class="page">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
         <h1 class="font-serif text-4xl font-bold text-slate-900 mb-3">Blog</h1>
@@ -206,12 +198,11 @@
       </div>
     </div>
 
-    <!-- ========== POST DETALHE ========== -->
     <div id="page-post-detalhe" class="page">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10" id="conteudo-post-detalhe"></div>
     </div>
 
-    <!-- ========== BUSCAR ========== -->
+    <!-- BUSCAR -->
     <div id="page-buscar" class="page">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
         <h1 class="font-serif text-4xl font-bold text-slate-900 mb-6">Buscar</h1>
@@ -223,7 +214,7 @@
       </div>
     </div>
 
-    <!-- ========== SOBRE ========== -->
+    <!-- SOBRE -->
     <div id="page-sobre" class="page">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
         <h1 class="font-serif text-4xl font-bold text-slate-900 mb-6">Sobre o 27 Praias de Guarujá</h1>
@@ -236,19 +227,19 @@
       </div>
     </div>
 
-    <!-- ========== CONTATO ========== -->
+    <!-- CONTATO -->
     <div id="page-contato" class="page">
       <div class="max-w-xl mx-auto px-4 sm:px-6 py-12">
         <h1 class="font-serif text-4xl font-bold text-slate-900 mb-4">Contato</h1>
         <p class="text-slate-600 mb-8">Dúvidas sobre praias, roteiros ou sugestões? Fale conosco.</p>
-        <a id="contato-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-xl hover:bg-green-100 transition-colors mb-4">
+        <a id="contato-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-xl hover:bg-green-100 mb-4">
           <span class="text-2xl">💬</span>
           <div>
             <p class="font-semibold text-slate-900">WhatsApp</p>
             <p class="text-sm text-slate-600">Resposta rápida</p>
           </div>
         </a>
-        <form class="mt-8 space-y-4" onsubmit="alert('Formulário demonstrativo. Conecte a um serviço de e-mail em produção.'); return false;">
+        <form class="mt-8 space-y-4" onsubmit="alert('Formulário demonstrativo. Conecte Formspree/Resend em produção.'); return false;">
           <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Nome</label>
             <input type="text" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500" placeholder="Seu nome" />
@@ -262,14 +253,82 @@
             <textarea rows="4" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500" placeholder="Sua mensagem..."></textarea>
           </div>
           <button type="submit" class="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-xl">Enviar mensagem</button>
-          <p class="text-xs text-slate-500 text-center">Formulário demonstrativo. Conecte Formspree/Resend em produção.</p>
         </form>
+      </div>
+    </div>
+
+    <!-- ========== DASHBOARD ========== -->
+    <div id="page-dashboard" class="page">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+        <h1 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 mb-2">Dashboard</h1>
+        <p class="text-slate-500 text-sm mb-8">Estatísticas de visualização do site</p>
+
+        <!-- Login -->
+        <div id="dash-login" class="max-w-sm mx-auto bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <p class="text-sm text-slate-600 mb-4">Área restrita. Digite a senha de administrador.</p>
+          <input type="password" id="dash-senha" placeholder="Senha" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 mb-3" onkeydown="if(event.key==='Enter') fazerLoginDash()" />
+          <button onclick="fazerLoginDash()" class="w-full py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-xl">Entrar</button>
+          <p id="dash-erro" class="text-red-500 text-sm mt-2 hidden">Senha incorreta</p>
+          <p class="text-xs text-slate-400 mt-4">Senha padrão: <code class="bg-slate-100 px-1 rounded">admin27</code> (altere no código)</p>
+        </div>
+
+        <!-- Conteúdo do dashboard (após login) -->
+        <div id="dash-conteudo" class="hidden">
+          <div class="flex items-center justify-between mb-6">
+            <p class="text-sm text-slate-500 max-w-xl">
+              Estas são visualizações registradas pelo próprio site (abertura das páginas de conteúdo). Não substituem ferramentas externas de analytics, mas mostram o que mais interessa no dia a dia: o que as pessoas mais abrem.
+            </p>
+            <button onclick="logoutDash()" class="text-sm text-slate-500 hover:text-red-600 shrink-0 ml-4">Sair</button>
+          </div>
+
+          <!-- Cards resumo -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-1">Artigos</p>
+              <p id="dash-total-posts" class="text-3xl font-bold text-sky-600">0</p>
+              <p class="text-xs text-slate-400 mt-1">views</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-1">Praias</p>
+              <p id="dash-total-praias" class="text-3xl font-bold text-cyan-600">0</p>
+              <p class="text-xs text-slate-400 mt-1">views</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-1">Pontos</p>
+              <p id="dash-total-pontos" class="text-3xl font-bold text-amber-500">0</p>
+              <p class="text-xs text-slate-400 mt-1">views</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+              <p class="text-xs uppercase tracking-wider text-slate-500 mb-1">Total geral</p>
+              <p id="dash-total-geral" class="text-3xl font-bold text-slate-800">0</p>
+              <p class="text-xs text-slate-400 mt-1">views</p>
+            </div>
+          </div>
+
+          <!-- Rankings -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+              <h2 class="font-serif text-lg font-bold text-slate-900 mb-4">🏆 Top artigos</h2>
+              <ol id="dash-rank-posts" class="space-y-2 text-sm"></ol>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+              <h2 class="font-serif text-lg font-bold text-slate-900 mb-4">🏖️ Top praias</h2>
+              <ol id="dash-rank-praias" class="space-y-2 text-sm"></ol>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+              <h2 class="font-serif text-lg font-bold text-slate-900 mb-4">📍 Top pontos</h2>
+              <ol id="dash-rank-pontos" class="space-y-2 text-sm"></ol>
+            </div>
+          </div>
+
+          <button onclick="carregarDashboard()" class="mt-6 text-sm text-sky-600 hover:text-sky-700 font-medium">Atualizar dados ↻</button>
+        </div>
       </div>
     </div>
 
   </main>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer class="bg-slate-900 text-slate-300 mt-auto">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -290,7 +349,7 @@
         </div>
         <div>
           <h4 class="text-xs font-semibold uppercase tracking-wider text-white mb-3">Contato</h4>
-          <a id="footer-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition-colors mb-3">WhatsApp</a>
+          <a id="footer-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl mb-3">WhatsApp</a>
           <div><a id="footer-instagram" href="#" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-sky-400">Instagram</a></div>
         </div>
       </div>
@@ -300,54 +359,42 @@
     </div>
   </footer>
 
-  <!-- WhatsApp flutuante -->
-  <a id="wa-float" href="#" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-40 flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg transition-transform hover:scale-105" aria-label="WhatsApp">
+  <a id="wa-float" href="#" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-40 flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:scale-105 transition-transform" aria-label="WhatsApp">
     <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
   <script>
     // ============================================================
-    // CONFIGURAÇÃO — troque pelos seus valores
+    // CONFIGURAÇÃO
     // ============================================================
     const SUPABASE_URL = 'https://SEU_PROJETO.supabase.co';
     const SUPABASE_ANON_KEY = 'SUA_CHAVE_ANON_AQUI';
-    const WHATSAPP_NUMBER = '5511999999999'; // só números, com DDI
+    const WHATSAPP_NUMBER = '5511999999999';
     const INSTAGRAM_URL = 'https://instagram.com/seu_perfil';
+    const DASH_SENHA = 'admin27'; // altere esta senha
 
-    // ============================================================
-    // Dados de EXEMPLO (usados se Supabase estiver vazio ou não configurado)
-    // ============================================================
+    // Demo data
     const DEMO_BEACHES = [{
-      id: 'demo-1',
-      name: 'Praia Exemplo (Demonstração)',
-      slug: 'praia-exemplo-demonstracao',
-      description: 'Este é um registro de EXEMPLO para demonstrar a estrutura do site. Substitua pelos dados reais das praias de Guarujá no Supabase.',
+      id: 'demo-1', name: 'Praia Exemplo (Demonstração)', slug: 'praia-exemplo-demonstracao',
+      description: 'Registro de EXEMPLO para demonstrar a estrutura. Substitua pelos dados reais no Supabase.',
       cover_image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
-      region: 'Região Exemplo',
-      location: 'Guarujá - SP (dados de demonstração)',
-      activities: ['Banho de mar', 'Caminhada'],
-      tips: 'Este conteúdo é apenas demonstrativo. Não representa uma praia real.'
+      region: 'Região Exemplo', location: 'Guarujá - SP (demonstração)',
+      activities: ['Banho de mar', 'Caminhada'], tips: 'Conteúdo apenas demonstrativo.', views: 0
     }];
     const DEMO_ATTRACTIONS = [{
-      id: 'demo-a1',
-      name: 'Ponto Turístico Exemplo (Demonstração)',
-      slug: 'ponto-exemplo-demonstracao',
-      description: 'Registro de EXEMPLO para testar a página de detalhe. Substitua por atrações reais no Supabase.',
+      id: 'demo-a1', name: 'Ponto Turístico Exemplo (Demonstração)', slug: 'ponto-exemplo-demonstracao',
+      description: 'Registro de EXEMPLO. Substitua por atrações reais no Supabase.',
       cover_image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800',
-      location: 'Guarujá - SP (demonstração)',
-      opening_hours: 'Horário de exemplo'
+      location: 'Guarujá - SP (demonstração)', opening_hours: 'Horário de exemplo', views: 0
     }];
     const DEMO_POSTS = [{
-      id: 'demo-p1',
-      title: '[EXEMPLO] Artigo demonstrativo — não é conteúdo real',
+      id: 'demo-p1', title: '[EXEMPLO] Artigo demonstrativo — não é conteúdo real',
       slug: 'exemplo-artigo-demonstrativo',
-      excerpt: 'Este é um post de demonstração para validar a estrutura do blog. Não é um artigo publicado de verdade.',
-      content: '## Artigo de demonstração\n\nEste conteúdo existe apenas para você ver como a página de artigo funciona.\n\n**Não é um artigo real sobre Guarujá.**\n\nQuando começar a publicar de verdade (1 artigo por dia), cadastre os posts no Supabase com status `published`.',
+      excerpt: 'Post de demonstração para validar a estrutura do blog.',
+      content: '## Artigo de demonstração\n\nEste conteúdo existe apenas para testar o site.\n\n**Não é um artigo real.** Cadastre posts no Supabase com status published.',
       cover_image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
-      category: 'Guia de Guarujá',
-      author: 'Equipe 27 Praias de Guarujá',
-      published_at: new Date().toISOString(),
-      status: 'published'
+      category: 'Guia de Guarujá', author: 'Equipe 27 Praias de Guarujá',
+      published_at: new Date().toISOString(), status: 'published', views: 0
     }];
 
     let supabaseClient = null;
@@ -356,24 +403,17 @@
     let cachePosts = [];
 
     function initSupabase() {
-      if (SUPABASE_URL.includes('SEU_PROJETO') || SUPABASE_ANON_KEY.includes('SUA_CHAVE')) {
-        console.warn('Supabase não configurado. Usando dados de demonstração.');
-        return null;
-      }
-      try {
-        return window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      } catch (e) {
-        console.error(e);
-        return null;
-      }
+      if (SUPABASE_URL.includes('SEU_PROJETO') || SUPABASE_ANON_KEY.includes('SUA_CHAVE')) return null;
+      try { return window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); }
+      catch (e) { console.error(e); return null; }
     }
 
     async function carregarDados() {
       supabaseClient = initSupabase();
       if (!supabaseClient) {
-        cacheBeaches = DEMO_BEACHES;
-        cacheAttractions = DEMO_ATTRACTIONS;
-        cachePosts = DEMO_POSTS;
+        cacheBeaches = [...DEMO_BEACHES];
+        cacheAttractions = [...DEMO_ATTRACTIONS];
+        cachePosts = [...DEMO_POSTS];
         return;
       }
       try {
@@ -382,106 +422,118 @@
           supabaseClient.from('tourist_attractions').select('*').order('name'),
           supabaseClient.from('posts_public_view').select('*').eq('status', 'published').order('published_at', { ascending: false })
         ]);
-        cacheBeaches = (b.data && b.data.length) ? b.data : DEMO_BEACHES;
-        cacheAttractions = (a.data && a.data.length) ? a.data : DEMO_ATTRACTIONS;
-        cachePosts = (p.data && p.data.length) ? p.data : DEMO_POSTS;
-        if (b.error) console.warn('beaches:', b.error.message);
-        if (a.error) console.warn('attractions:', a.error.message);
-        if (p.error) console.warn('posts:', p.error.message);
+        cacheBeaches = (b.data && b.data.length) ? b.data : [...DEMO_BEACHES];
+        cacheAttractions = (a.data && a.data.length) ? a.data : [...DEMO_ATTRACTIONS];
+        cachePosts = (p.data && p.data.length) ? p.data : [...DEMO_POSTS];
       } catch (e) {
         console.error(e);
-        cacheBeaches = DEMO_BEACHES;
-        cacheAttractions = DEMO_ATTRACTIONS;
-        cachePosts = DEMO_POSTS;
+        cacheBeaches = [...DEMO_BEACHES];
+        cacheAttractions = [...DEMO_ATTRACTIONS];
+        cachePosts = [...DEMO_POSTS];
+      }
+    }
+
+    // ---------- VIEWS (métricas) ----------
+    function jaContouNestaSessao(tipo, slug) {
+      const key = 'viewed_' + tipo + '_' + slug;
+      return sessionStorage.getItem(key) === '1';
+    }
+    function marcarContado(tipo, slug) {
+      sessionStorage.setItem('viewed_' + tipo + '_' + slug, '1');
+    }
+
+    async function registrarView(tipo, id, slug) {
+      // 1 contagem por sessão por conteúdo
+      if (jaContouNestaSessao(tipo, slug)) return;
+
+      // Atualiza cache local imediatamente
+      let item = null;
+      if (tipo === 'post') item = cachePosts.find(x => x.slug === slug);
+      if (tipo === 'beach') item = cacheBeaches.find(x => x.slug === slug);
+      if (tipo === 'attraction') item = cacheAttractions.find(x => x.slug === slug);
+      if (item) item.views = (item.views || 0) + 1;
+      marcarContado(tipo, slug);
+
+      // Envia ao Supabase se configurado e se não for demo
+      if (!supabaseClient || !id || String(id).startsWith('demo-')) return;
+
+      const tabela = tipo === 'post' ? 'posts' : (tipo === 'beach' ? 'beaches' : 'tourist_attractions');
+      try {
+        // Lê valor atual e incrementa (simples; para produção alta escala use RPC)
+        const { data } = await supabaseClient.from(tabela).select('views').eq('id', id).single();
+        const atual = (data && data.views) ? data.views : 0;
+        await supabaseClient.from(tabela).update({ views: atual + 1 }).eq('id', id);
+      } catch (e) {
+        console.warn('Erro ao registrar view:', e);
       }
     }
 
     function formatDate(d) {
-      try {
-        return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
-      } catch { return d; }
+      try { return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' }); }
+      catch { return d; }
     }
 
     function cardPraia(b) {
-      return `
-        <a href="#/praia/${b.slug}" onclick="abrirPraia('${b.slug}'); return false;" class="group block bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg hover:border-sky-200 transition-all">
-          <div class="relative aspect-[16/10] overflow-hidden bg-sky-50">
-            ${b.cover_image ? `<img src="${b.cover_image}" alt="${b.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />` : `<div class="w-full h-full flex items-center justify-center text-4xl">🏖️</div>`}
-          </div>
-          <div class="p-4">
-            <h3 class="font-serif text-lg font-bold text-slate-900 group-hover:text-sky-600">${b.name}</h3>
-            ${b.region ? `<p class="text-xs text-sky-600 mt-1 font-medium">${b.region}</p>` : ''}
-            ${b.description ? `<p class="text-sm text-slate-600 mt-2 line-clamp-2">${b.description}</p>` : ''}
-          </div>
-        </a>`;
+      return `<a href="#/praia/${b.slug}" onclick="abrirPraia('${b.slug}'); return false;" class="group block bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg hover:border-sky-200 transition-all">
+        <div class="relative aspect-[16/10] overflow-hidden bg-sky-50">
+          ${b.cover_image ? `<img src="${b.cover_image}" alt="${b.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />` : `<div class="w-full h-full flex items-center justify-center text-4xl">🏖️</div>`}
+        </div>
+        <div class="p-4">
+          <h3 class="font-serif text-lg font-bold text-slate-900 group-hover:text-sky-600">${b.name}</h3>
+          ${b.region ? `<p class="text-xs text-sky-600 mt-1 font-medium">${b.region}</p>` : ''}
+          ${b.description ? `<p class="text-sm text-slate-600 mt-2 line-clamp-2">${b.description}</p>` : ''}
+        </div>
+      </a>`;
     }
-
     function cardPonto(a) {
-      return `
-        <a href="#/ponto/${a.slug}" onclick="abrirPonto('${a.slug}'); return false;" class="group block bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg hover:border-cyan-200 transition-all">
-          <div class="relative aspect-[16/10] overflow-hidden bg-cyan-50">
-            ${a.cover_image ? `<img src="${a.cover_image}" alt="${a.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />` : `<div class="w-full h-full flex items-center justify-center text-4xl">📍</div>`}
-          </div>
-          <div class="p-4">
-            <h3 class="font-serif text-lg font-bold text-slate-900 group-hover:text-cyan-600">${a.name}</h3>
-            ${a.location ? `<p class="text-xs text-cyan-600 mt-1 font-medium">${a.location}</p>` : ''}
-            ${a.description ? `<p class="text-sm text-slate-600 mt-2 line-clamp-2">${a.description}</p>` : ''}
-          </div>
-        </a>`;
+      return `<a href="#/ponto/${a.slug}" onclick="abrirPonto('${a.slug}'); return false;" class="group block bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg hover:border-cyan-200 transition-all">
+        <div class="relative aspect-[16/10] overflow-hidden bg-cyan-50">
+          ${a.cover_image ? `<img src="${a.cover_image}" alt="${a.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />` : `<div class="w-full h-full flex items-center justify-center text-4xl">📍</div>`}
+        </div>
+        <div class="p-4">
+          <h3 class="font-serif text-lg font-bold text-slate-900 group-hover:text-cyan-600">${a.name}</h3>
+          ${a.location ? `<p class="text-xs text-cyan-600 mt-1 font-medium">${a.location}</p>` : ''}
+          ${a.description ? `<p class="text-sm text-slate-600 mt-2 line-clamp-2">${a.description}</p>` : ''}
+        </div>
+      </a>`;
     }
-
     function cardPost(p) {
-      return `
-        <article class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition-all">
-          <a href="#/post/${p.slug}" onclick="abrirPost('${p.slug}'); return false;" class="block relative aspect-[16/9] overflow-hidden bg-slate-100">
-            ${p.cover_image ? `<img src="${p.cover_image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />` : `<div class="w-full h-full flex items-center justify-center text-3xl">📝</div>`}
-            <span class="absolute top-3 left-3 px-2.5 py-1 bg-sky-600 text-white text-xs font-semibold rounded-full">${p.category || 'Blog'}</span>
-          </a>
-          <div class="p-5">
-            <time class="text-xs text-slate-500 block mb-2">${formatDate(p.published_at)}</time>
-            <a href="#/post/${p.slug}" onclick="abrirPost('${p.slug}'); return false;">
-              <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-sky-600 line-clamp-2 mb-2">${p.title}</h3>
-            </a>
-            <p class="text-sm text-slate-600 line-clamp-3 mb-4">${p.excerpt || ''}</p>
-            <a href="#/post/${p.slug}" onclick="abrirPost('${p.slug}'); return false;" class="text-sm font-medium text-sky-600 hover:text-sky-700">Ler mais →</a>
-          </div>
-        </article>`;
+      return `<article class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition-all">
+        <a href="#/post/${p.slug}" onclick="abrirPost('${p.slug}'); return false;" class="block relative aspect-[16/9] overflow-hidden bg-slate-100">
+          ${p.cover_image ? `<img src="${p.cover_image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />` : `<div class="w-full h-full flex items-center justify-center text-3xl">📝</div>`}
+          <span class="absolute top-3 left-3 px-2.5 py-1 bg-sky-600 text-white text-xs font-semibold rounded-full">${p.category || 'Blog'}</span>
+        </a>
+        <div class="p-5">
+          <time class="text-xs text-slate-500 block mb-2">${formatDate(p.published_at)}</time>
+          <a href="#/post/${p.slug}" onclick="abrirPost('${p.slug}'); return false;"><h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-sky-600 line-clamp-2 mb-2">${p.title}</h3></a>
+          <p class="text-sm text-slate-600 line-clamp-3 mb-4">${p.excerpt || ''}</p>
+          <a href="#/post/${p.slug}" onclick="abrirPost('${p.slug}'); return false;" class="text-sm font-medium text-sky-600 hover:text-sky-700">Ler mais →</a>
+        </div>
+      </article>`;
     }
-
-    function msgVazio(texto) {
-      return `<div class="col-span-full bg-sky-50 border border-sky-100 rounded-2xl p-8 text-center text-slate-600"><p class="font-medium">${texto}</p><p class="text-sm mt-1">Cadastre no Supabase para aparecer aqui.</p></div>`;
+    function msgVazio(t) {
+      return `<div class="col-span-full bg-sky-50 border border-sky-100 rounded-2xl p-8 text-center text-slate-600"><p class="font-medium">${t}</p><p class="text-sm mt-1">Cadastre no Supabase para aparecer aqui.</p></div>`;
     }
 
     function renderHome() {
-      const elP = document.getElementById('home-praias');
-      const elA = document.getElementById('home-pontos');
-      const elPosts = document.getElementById('home-posts');
-      elP.innerHTML = cacheBeaches.length ? cacheBeaches.slice(0, 6).map(cardPraia).join('') : msgVazio('Nenhuma praia cadastrada ainda.');
-      elA.innerHTML = cacheAttractions.length ? cacheAttractions.slice(0, 4).map(cardPonto).join('') : msgVazio('Nenhum ponto turístico cadastrado.');
-      elPosts.innerHTML = cachePosts.length ? cachePosts.slice(0, 3).map(cardPost).join('') : msgVazio('Nenhum artigo publicado ainda. Pronto para 1 artigo por dia.');
+      document.getElementById('home-praias').innerHTML = cacheBeaches.length ? cacheBeaches.slice(0, 6).map(cardPraia).join('') : msgVazio('Nenhuma praia cadastrada ainda.');
+      document.getElementById('home-pontos').innerHTML = cacheAttractions.length ? cacheAttractions.slice(0, 4).map(cardPonto).join('') : msgVazio('Nenhum ponto turístico cadastrado.');
+      document.getElementById('home-posts').innerHTML = cachePosts.length ? cachePosts.slice(0, 3).map(cardPost).join('') : msgVazio('Nenhum artigo publicado ainda. Pronto para 1 artigo por dia.');
     }
-
     function renderListaPraias() {
-      document.getElementById('lista-praias').innerHTML = cacheBeaches.length
-        ? cacheBeaches.map(cardPraia).join('')
-        : msgVazio('Nenhuma praia cadastrada ainda.');
+      document.getElementById('lista-praias').innerHTML = cacheBeaches.length ? cacheBeaches.map(cardPraia).join('') : msgVazio('Nenhuma praia cadastrada ainda.');
     }
-
     function renderListaPontos() {
-      document.getElementById('lista-pontos').innerHTML = cacheAttractions.length
-        ? cacheAttractions.map(cardPonto).join('')
-        : msgVazio('Nenhum ponto turístico cadastrado.');
+      document.getElementById('lista-pontos').innerHTML = cacheAttractions.length ? cacheAttractions.map(cardPonto).join('') : msgVazio('Nenhum ponto turístico cadastrado.');
     }
-
     function renderListaPosts() {
-      document.getElementById('lista-posts').innerHTML = cachePosts.length
-        ? cachePosts.map(cardPost).join('')
-        : msgVazio('Nenhum artigo publicado. Cadastre com status published.');
+      document.getElementById('lista-posts').innerHTML = cachePosts.length ? cachePosts.map(cardPost).join('') : msgVazio('Nenhum artigo publicado. Cadastre com status published.');
     }
 
     function abrirPraia(slug) {
       const b = cacheBeaches.find(x => x.slug === slug);
       if (!b) { navegar('praias'); return; }
+      registrarView('beach', b.id, b.slug);
       const acts = (b.activities || []).map(a => `<li>${a}</li>`).join('');
       document.getElementById('conteudo-praia-detalhe').innerHTML = `
         <a href="#/praias" onclick="navegar('praias'); return false;" class="text-sky-600 hover:text-sky-700 text-sm font-medium mb-6 inline-block">← Voltar para praias</a>
@@ -497,11 +549,13 @@
       `;
       mostrarPagina('praia-detalhe');
       window.scrollTo(0, 0);
+      history.replaceState(null, '', '#/praia/' + slug);
     }
 
     function abrirPonto(slug) {
       const a = cacheAttractions.find(x => x.slug === slug);
       if (!a) { navegar('pontos'); return; }
+      registrarView('attraction', a.id, a.slug);
       document.getElementById('conteudo-ponto-detalhe').innerHTML = `
         <a href="#/pontos" onclick="navegar('pontos'); return false;" class="text-sky-600 hover:text-sky-700 text-sm font-medium mb-6 inline-block">← Voltar para pontos turísticos</a>
         ${a.cover_image ? `<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-8 shadow-md"><img src="${a.cover_image}" alt="${a.name}" class="w-full h-full object-cover" /></div>` : ''}
@@ -512,20 +566,20 @@
       `;
       mostrarPagina('ponto-detalhe');
       window.scrollTo(0, 0);
+      history.replaceState(null, '', '#/ponto/' + slug);
     }
 
     function abrirPost(slug) {
       const p = cachePosts.find(x => x.slug === slug);
       if (!p) { navegar('blog'); return; }
+      registrarView('post', p.id, p.slug);
       const htmlContent = (p.content || '').replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>').replace(/## (.+)/g, '<h2>$1</h2>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
       document.getElementById('conteudo-post-detalhe').innerHTML = `
         <div class="mb-6">
           <span class="inline-block px-3 py-1 bg-sky-100 text-sky-700 text-xs font-semibold rounded-full mb-4">${p.category || 'Blog'}</span>
           <h1 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-4">${p.title}</h1>
           <div class="flex flex-wrap items-center gap-3 text-sm text-slate-500">
-            <time>${formatDate(p.published_at)}</time>
-            <span>•</span>
-            <span>Por ${p.author || 'Equipe 27 Praias de Guarujá'}</span>
+            <time>${formatDate(p.published_at)}</time><span>•</span><span>Por ${p.author || 'Equipe 27 Praias de Guarujá'}</span>
           </div>
         </div>
         ${p.cover_image ? `<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-10 shadow-md"><img src="${p.cover_image}" alt="${p.title}" class="w-full h-full object-cover" /></div>` : ''}
@@ -536,6 +590,7 @@
       `;
       mostrarPagina('post-detalhe');
       window.scrollTo(0, 0);
+      history.replaceState(null, '', '#/post/' + slug);
     }
 
     function fazerBusca(e) {
@@ -566,6 +621,60 @@
       box.innerHTML = html;
     }
 
+    // ---------- DASHBOARD ----------
+    function isDashLogado() {
+      return localStorage.getItem('dash_auth') === '1';
+    }
+    function fazerLoginDash() {
+      const senha = document.getElementById('dash-senha').value;
+      if (senha === DASH_SENHA) {
+        localStorage.setItem('dash_auth', '1');
+        document.getElementById('dash-erro').classList.add('hidden');
+        mostrarDashConteudo();
+        carregarDashboard();
+      } else {
+        document.getElementById('dash-erro').classList.remove('hidden');
+      }
+    }
+    function logoutDash() {
+      localStorage.removeItem('dash_auth');
+      document.getElementById('dash-login').classList.remove('hidden');
+      document.getElementById('dash-conteudo').classList.add('hidden');
+    }
+    function mostrarDashConteudo() {
+      document.getElementById('dash-login').classList.add('hidden');
+      document.getElementById('dash-conteudo').classList.remove('hidden');
+    }
+
+    function carregarDashboard() {
+      // Usa cache (já com views atualizadas na sessão) + opcionalmente recarrega do Supabase
+      const posts = [...cachePosts].sort((a, b) => (b.views || 0) - (a.views || 0));
+      const praias = [...cacheBeaches].sort((a, b) => (b.views || 0) - (a.views || 0));
+      const pontos = [...cacheAttractions].sort((a, b) => (b.views || 0) - (a.views || 0));
+
+      const totP = posts.reduce((s, x) => s + (x.views || 0), 0);
+      const totB = praias.reduce((s, x) => s + (x.views || 0), 0);
+      const totA = pontos.reduce((s, x) => s + (x.views || 0), 0);
+
+      document.getElementById('dash-total-posts').textContent = totP;
+      document.getElementById('dash-total-praias').textContent = totB;
+      document.getElementById('dash-total-pontos').textContent = totA;
+      document.getElementById('dash-total-geral').textContent = totP + totB + totA;
+
+      document.getElementById('dash-rank-posts').innerHTML = posts.length
+        ? posts.slice(0, 10).map((p, i) => `<li class="flex justify-between gap-2 py-1.5 border-b border-slate-50"><span class="text-slate-700 truncate"><span class="text-slate-400 mr-1">${i + 1}.</span>${p.title}</span><span class="font-semibold text-sky-600 shrink-0">${p.views || 0}</span></li>`).join('')
+        : '<li class="text-slate-400">Nenhum artigo</li>';
+
+      document.getElementById('dash-rank-praias').innerHTML = praias.length
+        ? praias.slice(0, 10).map((b, i) => `<li class="flex justify-between gap-2 py-1.5 border-b border-slate-50"><span class="text-slate-700 truncate"><span class="text-slate-400 mr-1">${i + 1}.</span>${b.name}</span><span class="font-semibold text-cyan-600 shrink-0">${b.views || 0}</span></li>`).join('')
+        : '<li class="text-slate-400">Nenhuma praia</li>';
+
+      document.getElementById('dash-rank-pontos').innerHTML = pontos.length
+        ? pontos.slice(0, 10).map((a, i) => `<li class="flex justify-between gap-2 py-1.5 border-b border-slate-50"><span class="text-slate-700 truncate"><span class="text-slate-400 mr-1">${i + 1}.</span>${a.name}</span><span class="font-semibold text-amber-500 shrink-0">${a.views || 0}</span></li>`).join('')
+        : '<li class="text-slate-400">Nenhum ponto</li>';
+    }
+
+    // ---------- NAVEGAÇÃO ----------
     function mostrarPagina(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       const el = document.getElementById('page-' + id);
@@ -580,6 +689,14 @@
       else if (pagina === 'buscar') { mostrarPagina('buscar'); }
       else if (pagina === 'sobre') { mostrarPagina('sobre'); }
       else if (pagina === 'contato') { mostrarPagina('contato'); }
+      else if (pagina === 'dashboard') {
+        mostrarPagina('dashboard');
+        if (isDashLogado()) { mostrarDashConteudo(); carregarDashboard(); }
+        else {
+          document.getElementById('dash-login').classList.remove('hidden');
+          document.getElementById('dash-conteudo').classList.add('hidden');
+        }
+      }
       window.scrollTo(0, 0);
       history.replaceState(null, '', '#/' + (pagina === 'home' ? '' : pagina));
     }
@@ -604,16 +721,10 @@
       if (hash.startsWith('praia/')) abrirPraia(hash.split('/')[1]);
       else if (hash.startsWith('ponto/')) abrirPonto(hash.split('/')[1]);
       else if (hash.startsWith('post/')) abrirPost(hash.split('/')[1]);
-      else if (hash === 'praias') navegar('praias');
-      else if (hash === 'pontos') navegar('pontos');
-      else if (hash === 'blog') navegar('blog');
-      else if (hash === 'buscar') navegar('buscar');
-      else if (hash === 'sobre') navegar('sobre');
-      else if (hash === 'contato') navegar('contato');
+      else if (['praias', 'pontos', 'blog', 'buscar', 'sobre', 'contato', 'dashboard'].includes(hash)) navegar(hash);
       else navegar('home');
     }
 
-    // Init
     (async function () {
       aplicarLinksExternos();
       await carregarDados();
@@ -626,19 +737,16 @@
 
 <!--
 ============================================================
-SQL PARA COLAR NO SUPABASE (SQL Editor)
+SQL SUPABASE (cole no SQL Editor)
 ============================================================
 
--- Categories
-CREATE TABLE IF NOT EXISTS public.categories (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  name TEXT NOT NULL UNIQUE,
-  slug TEXT NOT NULL UNIQUE,
-  description TEXT,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
-);
+-- Se as tabelas já existem, só adicione a coluna views:
+ALTER TABLE public.posts ADD COLUMN IF NOT EXISTS views INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE public.beaches ADD COLUMN IF NOT EXISTS views INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE public.tourist_attractions ADD COLUMN IF NOT EXISTS views INTEGER NOT NULL DEFAULT 0;
 
--- Posts
+-- Schema completo (se ainda não criou):
+
 CREATE TABLE IF NOT EXISTS public.posts (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   title TEXT NOT NULL,
@@ -654,14 +762,9 @@ CREATE TABLE IF NOT EXISTS public.posts (
   status TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'published', 'archived')),
   seo_title TEXT,
   seo_description TEXT,
-  api_key TEXT
+  views INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_posts_slug ON public.posts (slug);
-CREATE INDEX IF NOT EXISTS idx_posts_status ON public.posts (status);
-CREATE INDEX IF NOT EXISTS idx_posts_published ON public.posts (published_at DESC);
-
--- Beaches
 CREATE TABLE IF NOT EXISTS public.beaches (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name TEXT NOT NULL,
@@ -675,13 +778,11 @@ CREATE TABLE IF NOT EXISTS public.beaches (
   longitude NUMERIC,
   activities TEXT[],
   tips TEXT,
+  views INTEGER NOT NULL DEFAULT 0,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE INDEX IF NOT EXISTS idx_beaches_slug ON public.beaches (slug);
-
--- Tourist attractions
 CREATE TABLE IF NOT EXISTS public.tourist_attractions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name TEXT NOT NULL,
@@ -693,74 +794,29 @@ CREATE TABLE IF NOT EXISTS public.tourist_attractions (
   latitude NUMERIC,
   longitude NUMERIC,
   opening_hours TEXT,
+  views INTEGER NOT NULL DEFAULT 0,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE INDEX IF NOT EXISTS idx_attractions_slug ON public.tourist_attractions (slug);
-
--- View segura (sem api_key)
 CREATE OR REPLACE VIEW public.posts_public_view AS
 SELECT id, title, slug, excerpt, content, cover_image, category, author,
-       published_at, created_at, updated_at, status, seo_title, seo_description
+       published_at, created_at, updated_at, status, seo_title, seo_description, views
 FROM public.posts;
 
--- RLS
 ALTER TABLE public.posts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.beaches ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.tourist_attractions ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.categories ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Leitura pública posts" ON public.posts FOR SELECT USING (true);
-CREATE POLICY "Leitura pública beaches" ON public.beaches FOR SELECT USING (true);
-CREATE POLICY "Leitura pública attractions" ON public.tourist_attractions FOR SELECT USING (true);
-CREATE POLICY "Leitura pública categories" ON public.categories FOR SELECT USING (true);
+-- Leitura pública
+CREATE POLICY IF NOT EXISTS "Leitura pública posts" ON public.posts FOR SELECT USING (true);
+CREATE POLICY IF NOT EXISTS "Leitura pública beaches" ON public.beaches FOR SELECT USING (true);
+CREATE POLICY IF NOT EXISTS "Leitura pública attractions" ON public.tourist_attractions FOR SELECT USING (true);
 
--- Categorias
-INSERT INTO public.categories (name, slug, description) VALUES
-  ('Praias de Guarujá', 'praias-de-guaruja', 'Conteúdos sobre as praias'),
-  ('Pontos Turísticos', 'pontos-turisticos', 'Atrações e lugares icônicos'),
-  ('O que Fazer', 'o-que-fazer', 'Roteiros e atividades'),
-  ('Guia de Guarujá', 'guia-de-guaruja', 'Dicas práticas e guias'),
-  ('Onde Ficar', 'onde-ficar', 'Hospedagem e regiões'),
-  ('Experiências e Gastronomia', 'experiencias-e-gastronomia', 'Comida e experiências')
-ON CONFLICT (slug) DO NOTHING;
-
--- 1 exemplo de cada (opcional)
-INSERT INTO public.beaches (name, slug, description, cover_image, region, location, activities, tips)
-VALUES (
-  'Praia Exemplo (Demonstração)',
-  'praia-exemplo-demonstracao',
-  'Registro de EXEMPLO. Substitua pelos dados reais.',
-  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200',
-  'Região Exemplo',
-  'Guarujá - SP (demonstração)',
-  ARRAY['Banho de mar', 'Caminhada'],
-  'Conteúdo apenas demonstrativo.'
-) ON CONFLICT (slug) DO NOTHING;
-
-INSERT INTO public.tourist_attractions (name, slug, description, cover_image, location, opening_hours)
-VALUES (
-  'Ponto Turístico Exemplo (Demonstração)',
-  'ponto-exemplo-demonstracao',
-  'Registro de EXEMPLO. Substitua por atrações reais.',
-  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200',
-  'Guarujá - SP (demonstração)',
-  'Horário de exemplo'
-) ON CONFLICT (slug) DO NOTHING;
-
-INSERT INTO public.posts (title, slug, excerpt, content, cover_image, category, author, status, published_at)
-VALUES (
-  '[EXEMPLO] Artigo demonstrativo — não é conteúdo real',
-  'exemplo-artigo-demonstrativo',
-  'Post de demonstração para validar a estrutura do blog.',
-  E'## Artigo de demonstração\n\nEste conteúdo existe apenas para testar o site.\n\n**Não é um artigo real.** Cadastre posts reais com status published.',
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200',
-  'Guia de Guarujá',
-  'Equipe 27 Praias de Guarujá',
-  'published',
-  now()
-) ON CONFLICT (slug) DO NOTHING;
+-- Update de views (necessário para o contador funcionar com a anon key)
+CREATE POLICY IF NOT EXISTS "Update views posts" ON public.posts FOR UPDATE USING (true) WITH CHECK (true);
+CREATE POLICY IF NOT EXISTS "Update views beaches" ON public.beaches FOR UPDATE USING (true) WITH CHECK (true);
+CREATE POLICY IF NOT EXISTS "Update views attractions" ON public.tourist_attractions FOR UPDATE USING (true) WITH CHECK (true);
 
 ============================================================
 -->

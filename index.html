@@ -32,8 +32,14 @@
     .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     .page { display: none; }
     .page.active { display: block; }
-    .prose h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 0.75rem; color: #0f172a; }
-    .prose p { margin-bottom: 1rem; line-height: 1.7; color: #334155; }
+    .prose h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.65rem; font-weight: 700; margin: 2rem 0 0.85rem; color: #0c4a6e; line-height: 1.3; }
+    .prose h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 0.5rem; color: #0f172a; }
+    .prose p { margin-bottom: 1.15rem; line-height: 1.8; color: #334155; font-size: 1.05rem; }
+    .prose strong { color: #0f172a; font-weight: 600; }
+    .prose ul { margin: 0.75rem 0 1.25rem 1.25rem; list-style: disc; }
+    .prose ul li { margin-bottom: 0.45rem; line-height: 1.7; color: #334155; }
+    .prose ol { margin: 0.75rem 0 1.25rem 1.25rem; list-style: decimal; }
+    .prose ol li { margin-bottom: 0.45rem; line-height: 1.7; color: #334155; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased min-h-screen flex flex-col">
@@ -572,11 +578,40 @@
       history.replaceState(null, '', '#/ponto/' + slug);
     }
 
+    function renderMarkdown(md) {
+      if (!md) return '';
+      let text = md.replace(/\r\n/g, '\n');
+      // escape HTML
+      text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      // headings
+      text = text.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+      text = text.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+      // bold
+      text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      // unordered lists: group consecutive - lines
+      text = text.replace(/((?:^[-*] .+(?:\n|$))+)/gm, function (block) {
+        const items = block.trim().split(/\n/).map(function (line) {
+          return '<li>' + line.replace(/^[-*] /, '') + '</li>';
+        }).join('');
+        return '<ul>' + items + '</ul>';
+      });
+      // paragraphs: split by blank lines
+      const parts = text.split(/\n\n+/);
+      return parts.map(function (part) {
+        part = part.trim();
+        if (!part) return '';
+        if (part.startsWith('<h2>') || part.startsWith('<h3>') || part.startsWith('<ul>') || part.startsWith('<ol>')) return part;
+        // single newlines inside paragraph -> <br>
+        return '<p>' + part.replace(/\n/g, '<br>') + '</p>';
+      }).join('');
+    }
+
     function abrirPost(slug) {
+
       const p = cachePosts.find(x => x.slug === slug);
       if (!p) { navegar('blog'); return; }
       registrarView('post', p.id, p.slug);
-      const htmlContent = (p.content || '').replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>').replace(/## (.+)/g, '<h2>$1</h2>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      const htmlContent = renderMarkdown(p.content || '');
       document.getElementById('conteudo-post-detalhe').innerHTML = `
         <div class="mb-6">
           <span class="inline-block px-3 py-1 bg-sky-100 text-sky-700 text-xs font-semibold rounded-full mb-4">${p.category || 'Blog'}</span>
@@ -586,7 +621,7 @@
           </div>
         </div>
         ${p.cover_image ? `<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-10 shadow-md"><img src="${p.cover_image}" alt="${p.title}" class="w-full h-full object-cover" /></div>` : ''}
-        <div class="prose max-w-none"><p>${htmlContent}</p></div>
+        <div class="prose max-w-none">${htmlContent}</div>
         <div class="mt-12 pt-8 border-t border-slate-200">
           <a href="#/blog" onclick="navegar('blog'); return false;" class="text-sky-600 hover:text-sky-700 font-medium">← Voltar para o blog</a>
         </div>
